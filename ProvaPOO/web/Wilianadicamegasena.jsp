@@ -22,7 +22,7 @@
         <h3><a href="index.html">Voltar</a></h3>
         <a href="Wilianadicamegasena.jsp">Dica Mega-Sena</a> | 
        <%@include file="WEB-INF/jspf/header.jspf" %>
-       int n=5;
+      
         <%if(authUserName==null ){%>
             <p style="color: red">Você não tem permissão para ver este conteúdo</p>
         <%}else{%>
@@ -31,11 +31,11 @@
                 
                 
         <%if(errorMessage==null){%>
-          <h2> &#9752; BOA SORTE &#9752; </h2>
+          <h2> &#127808; BOA SORTE &#127808; </h2>
         <table border="1">
             <tr>
                 
-                <th>Número</th>
+                <th>&#127808; Número da mega &#127808;</th>
             </tr>
             <%for(int i=1; i<=n; i++){%>
             <tr>

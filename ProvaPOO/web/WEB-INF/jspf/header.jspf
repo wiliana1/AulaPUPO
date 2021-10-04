@@ -24,7 +24,7 @@
     <a href="page1.jsp">PÁGINA 1</a> | 
     <a href="page2.jsp">PÁGINA 2</a> | 
     <a href="WilianaSantos.jsp">Wiliana Santos</a> | 
-    <a href="Wilianadicamegasena.jsp">Dicas Mega-Sena</a> | 
+   
     <%if(authUserName==null ){%>
         <input type="text" name="auth-username"/>
         <input type="submit" name="auth-login" value="LOGIN"/>

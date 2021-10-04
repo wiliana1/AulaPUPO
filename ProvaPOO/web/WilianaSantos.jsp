@@ -27,11 +27,11 @@
         <%if(authUserName==null ){%>
             <p style="color: red">Você não tem permissão para ver este conteúdo</p>
         <%}else{%>
+             <a href="Wilianadicamegasena.jsp">Dicas Mega-Sena</a> | 
             <p> <br/>Wiliana Santiago dos Santos
              <br/> RA: 1290481822048
              <p> Semestre em que ingressei na FatecPG: Julho/2018
-            <br/> https://github.com/wiliana1
-      
+             <h4><a href="https://github.com/wiliana1">https://github.com/wiliana1</a></h4>
              <table border="1">        
              <tr>
                 <td>&#9889;DISCIPLINAS CURSADA&#9889; </td>
