@@ -1,24 +1,44 @@
 <%-- Wiliana Santos --%>
   
 
+<%@page import="java.util.ArrayList"%>
 <%@ page pageEncoding="UTF-8" %>
-<%
-    
-    String errorMessage = null;
-     
+<%  
 
     if(request.getParameter("auth-login")!=null){
         String userName = request.getParameter("auth-username");
         session.setAttribute("auth-username", userName);
+        
+        if(application.getAttribute("sessionList")==null){
+             ArrayList<String> sessionList =  new ArrayList<>();
+            sessionList.add(userName);
+            application.setAttribute("sessionList" , sessionList);
+        } else {
+            ArrayList<String> sessionList = (ArrayList)application.getAttribute("sessionList");
+             sessionList.add(userName); 
+            application.setAttribute("sessionList" , sessionList);
+        }
+              
+        
         response.sendRedirect(request.getRequestURI());
     }else if(request.getParameter("auth-logout")!=null){
+        
+         if(application.getAttribute("sessionList")!=null){
+                    ArrayList<String> sessionList = (ArrayList)application.getAttribute("sessionList");
+                    sessionList.remove(session.getAttribute("auth-username"));
+                 application.setAttribute("sessionList" , sessionList);
+
+        }
+                
         session.removeAttribute("auth-username");
+  
+        
         response.sendRedirect(request.getRequestURI());
     }
     String authUserName = (String) session.getAttribute("auth-username");
 %>
 
-<h1>&#127774; WILIANA SANTOS &#127774;</h1>
+<h1>	&#128241;WILIANA_APP 	&#128241;</h1>
 <form method="post">
     <a href="index.jsp">INÍCIO</a> | 
     <a href="page1.jsp">PÁGINA 1</a> | 

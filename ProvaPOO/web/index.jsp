@@ -6,7 +6,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    //Processamento do contator de requisições da aplicação
+    int sessions = 0;
+     ArrayList<String> sessionList = null;
+    if(application.getAttribute("sessionList")!=null){
+            sessionList =  (ArrayList)application.getAttribute("sessionList");
+            sessions = sessionList.size();}
+
+//Processamento do contator de requisições da aplicação
     if(application.getAttribute("counter")==null){
        application.setAttribute("counter", 1);
     }
@@ -61,26 +67,15 @@
         
         
         <h2>Índice</h2>
-        <p>Bem vindo a prova de POO</p>
+        <p>Bem vindo a prova de POO - P1</p>
         <hr/>
        
-        <h2>Requisições: <%= counter %></h2>
-        <%if(requestName!=null){%>
-            <hr/>
-            <h3>Usuarios Logados:</h3>
-            <div><%= requestName %></div>
+        <h3>Sessões: <u><%= sessions %></u></h3>
+        <%if(session.getAttribute("auth-username")!=null){%>
+        
+        
         <%}%>
-        <%if(sessionName!=null){%>
-            <hr/>
-            <h3>Atributo de sessão</h3>
-            <div><%= sessionName %></div>
-            <h3>Requisições: <%= sessionCounter %></h3>
-        <%}%>
-         <%if(applicationName!=null){%>
-            <hr/>
-            <h3>Atributo de aplicação</h3>
-            <div><%= applicationName %></div>
-        <%}%>
+   
        
     </body>
 </html>
