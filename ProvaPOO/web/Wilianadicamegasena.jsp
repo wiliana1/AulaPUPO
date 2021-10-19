@@ -6,50 +6,31 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-   
-    int n=5;
- 
+    ArrayList<Integer> numbers = (ArrayList)session.getAttribute("auth-numbers");
 %>
 <html>
     <head>
-        <title>Wiliana Santos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
     </head>
     <body>
-      
-      
-        <h3><a href="index.html">Voltar</a></h3>
-        <a href="Wilianadicamegasena.jsp">Dica Mega-Sena</a> | 
-       <%@include file="WEB-INF/jspf/header.jspf" %>
-      
-        <%if(authUserName==null ){%>
-            <p style="color: red">Você não tem permissão para ver este conteúdo</p>
+        <%@include file="WEB-INF/jspf/header.jspf" %>
+        <h2>Wiliana Santos - &#127808; BOA SORTE &#127808;</h2>
+        <%if(session.getAttribute("auth-username")==null){%>
+            <div>Você não tem permissão para ver essa página</div>
+        <%}else if(numbers == null){%>
+            <div>Não foram gerados números para você. :(</div>
         <%}else{%>
-                           
+            <table border="1">
+                <tr>
+                    <th>&#127808; Número da mega &#127808;</th>
+                </tr>
+                <%for(int n: numbers){%>
+                <tr>
+                    <td><%= n %></td>
+                </tr>
                 <%}%>
-                
-                
-        <%if(errorMessage==null){%>
-          <h2> &#127808; BOA SORTE &#127808; </h2>
-        <table border="1">
-            <tr>
-                
-                <th>&#127808; Número da mega &#127808;</th>
-            </tr>
-            <%for(int i=1; i<=n; i++){%>
-            <tr>
-                
-                <td><%= ((int)(60*Math.random())) %></td>
-            </tr>
-            <%}%>
-        </table>
-        <%}else{%>
-            <div style="color: red"><%= errorMessage %></div>
+            </table>
         <%}%>
-        <hr/>
-     
-            
-            
     </body>
 </html>

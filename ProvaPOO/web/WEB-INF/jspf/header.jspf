@@ -1,42 +1,47 @@
 <%-- Wiliana Santos --%>
   
 
+<%-- any content can be specified here e.g.: --%>
 <%@page import="java.util.ArrayList"%>
 <%@ page pageEncoding="UTF-8" %>
-<%  
-
+<%
     if(request.getParameter("auth-login")!=null){
         String userName = request.getParameter("auth-username");
         session.setAttribute("auth-username", userName);
-        
-        if(application.getAttribute("sessionList")==null){
-             ArrayList<String> sessionList =  new ArrayList<>();
-            sessionList.add(userName);
-            application.setAttribute("sessionList" , sessionList);
-        } else {
-            ArrayList<String> sessionList = (ArrayList)application.getAttribute("sessionList");
-             sessionList.add(userName); 
-            application.setAttribute("sessionList" , sessionList);
+        //Rotina que gera os números aleatórios
+        ArrayList<Integer> headerNumbers = new ArrayList<>();
+        while(headerNumbers.size()<6){
+            int n = ((int)(61*Math.random()))+1;
+            if(!headerNumbers.contains(n)){
+                headerNumbers.add(n);
+            }
         }
-              
-        
+        session.setAttribute("auth-numbers", headerNumbers);
+        //Rotina que adiciona o userName numa lista de sessões
+        if(application.getAttribute("sessionList")==null){
+            ArrayList<String> headerSessionList = new ArrayList<>();
+            headerSessionList.add(userName);
+            application.setAttribute("sessionList", headerSessionList);
+        }else{
+            ArrayList<String> headerSessionList = (ArrayList)application.getAttribute("sessionList");
+            headerSessionList.add(userName);
+            application.setAttribute("sessionList", headerSessionList);
+        }
         response.sendRedirect(request.getRequestURI());
     }else if(request.getParameter("auth-logout")!=null){
-        
-         if(application.getAttribute("sessionList")!=null){
-                    ArrayList<String> sessionList = (ArrayList)application.getAttribute("sessionList");
-                    sessionList.remove(session.getAttribute("auth-username"));
-                 application.setAttribute("sessionList" , sessionList);
-
+        //Remove o userName da lista de sessões
+        if(application.getAttribute("sessionList")!=null){
+            ArrayList<String> headerSessionList = (ArrayList)application.getAttribute("sessionList");
+            headerSessionList.remove(session.getAttribute("auth-username"));
+            application.setAttribute("sessionList", headerSessionList);
         }
-                
         session.removeAttribute("auth-username");
-  
-        
+        session.removeAttribute("auth-numbers");
         response.sendRedirect(request.getRequestURI());
     }
     String authUserName = (String) session.getAttribute("auth-username");
 %>
+
 
 <h1>	&#128241;WILIANA_APP 	&#128241;</h1>
 <form method="post">
@@ -44,19 +49,15 @@
     <a href="page1.jsp">PÁGINA 1</a> | 
     <a href="page2.jsp">PÁGINA 2</a> | 
     <a href="WilianaSantos.jsp">Wiliana Santos</a> | 
+     <a href="Wilianadicamegasena.jsp">Dicas Mega-Sena</a> | 
    
+
     <%if(authUserName==null ){%>
         <input type="text" name="auth-username"/>
         <input type="submit" name="auth-login" value="LOGIN"/>
     <%}else{%>
         Bem vindo, <%= authUserName %>
-         <input type="submit" name="auth-logout" value="LOGOUT"/> 
-                
-                   
-          
-        </table>
-            </table>
-       
+        <input type="submit" name="auth-logout" value="LOGOUT"/>
     <%}%>
 </form>
 <hr/>

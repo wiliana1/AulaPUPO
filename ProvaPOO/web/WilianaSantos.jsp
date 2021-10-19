@@ -5,29 +5,19 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
     <head>
-        <title>Wiliana Santos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
     </head>
     <body>
-      
-       
-        <h3><a href="index.jsp">Voltar</a></h3>
+        <%@include file="WEB-INF/jspf/header.jspf" %>
         
-       <%@include file="WEB-INF/jspf/header.jspf" %>
-
-       
-      
-     
-      
-     
-        <%if(authUserName==null ){%>
-            <p style="color: red">Você não tem permissão para ver este conteúdo</p>
+        <title>Wiliana Santos</title>
+        <%if(session.getAttribute("auth-username")==null){%>
+            <div>Você não tem permissão para ver essa página</div>
         <%}else{%>
-             <a href="Wilianadicamegasena.jsp">Dicas Mega-Sena</a> | 
+            
             <p> <br/>Wiliana Santiago dos Santos
              <br/> RA: 1290481822048
              <p> Semestre em que ingressei na FatecPG: Julho/2018
@@ -58,14 +48,7 @@
             <%}%>
                 
                 
-        <%if(errorMessage==null){%>
-       
-        <%}else{%>
-            <div style="color: red"><%= errorMessage %></div>
-        <%}%>
-        <hr/>
-    
-            
+               
             
     </body>
 </html>
