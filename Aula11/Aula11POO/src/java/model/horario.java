@@ -7,71 +7,70 @@ package model;
  *
  * 
  */
-public class Horario
-{
-    private int horas;
-    private int minutos;
-    private int segundos;
+public class Horario{  
+    private int h;
+    private int m;
+    private int s;
     /**
      *Construtor que inicializa a data com 01/01/2000
      */
-    public Data(){
-        horas = 24;
-        minutos = 60;
-        segundos = 360;
+    public Horario(){
+        h = 24;
+        m = 60;
+        s = 360;
     }
     /**
      * Construtor que inicializa a data com os parâmetros
-     * @param dia
-     * @param mês
-     * @param ano 
+     * @param h
+     * @param m
+     * @param s 
      */
-    public Data(int dia, int mês, int ano){
-        this.setData(dia, mês, ano);
+    public Horario(int h, int m, int s){
+        this.setHorario(h, m, s);
     }
     
-    public void setData(int dia, int mês, int ano){
-        this.setDia(dia);
-        this.setMês(mês);
-        this.setAno(ano);
+    public void setHorario(int h, int m, int s){
+        this.setHora(h);
+        this.setMinuto(m);
+        this.setSegundo(s);
     }
     
-    public String getData(){
-        String data = "";
-        if(dia<10) data += "0";
-        data += dia+"/";
-        if(mês<10) data += "0";
-        data += mês+"/";
-        data += ano;
-        return data;
+    public String getHorario(){
+        String hora = "";
+        if(hora<10) hora += "0";
+        hora += hora+"/";
+        if(m<10) hora += "0";
+        hora += m+"/";
+        hora += s;
+        return hora;
     }
 
-    public int getDia() {
-        return dia;
+    public int getHora() {
+        return hora;
     }
 
-    public void setDia(int dia) {
-        if(dia<1) this.dia = 1;
-        else if(dia > 31) this.dia = 31;
-        else this.dia = dia;
+    public void setHora(int h) {
+        if(h<1) this.h = 1;
+        else if(h > 24) this.h = 24;
+        else this.h = h;
     }
 
-    public int getMês() {
-        return mês;
+    public int getMinuto() {
+        return m;
     }
 
-    public void setMês(int mês) {
-        if(mês<1) this.mês = 1;
-        else if(mês > 12) this.mês = 12;
-        else this.mês = mês;
+    public void setMinuto(int mês) {
+        if(m<1) this.m = 1;
+        else if(m > 12) this.m = 12;
+        else this.m = m;
     }
 
-    public int getAno() {
-        return ano;
+    public int getSegundo() {
+        return s;
     }
 
-    public void setAno(int ano) {
-        this.ano = ano;
+    public void setSegundo(int s) {
+        this.s = s;
     }
     
 }
