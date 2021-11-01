@@ -7,17 +7,18 @@ package model;
  *
  * 
  */
-public class Data {
-    private int dia;
-    private int mês;
-    private int ano;
+public class Horario
+{
+    private int horas;
+    private int minutos;
+    private int segundos;
     /**
      *Construtor que inicializa a data com 01/01/2000
      */
     public Data(){
-        dia = 1;
-        mês = 1;
-        ano = 2000;
+        horas = 24;
+        minutos = 60;
+        segundos = 360;
     }
     /**
      * Construtor que inicializa a data com os parâmetros
