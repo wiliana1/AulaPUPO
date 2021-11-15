@@ -1,6 +1,5 @@
 <%-- 
     Document   : index
-    Created on : 20 de set. de 2021, 21:09:30
     Author     : Wiliana Santos
 --%>
 
@@ -35,7 +34,7 @@
         <title>JDBC - To-do list</title>
     </head>
     <body>
-        <h1>JDBC - Ricardo Pupo</h1>
+        <h1>JDBC - Wiliana Santos</h1>
         <div><%= new java.util.Date() %></div>
         <h2>To-do list</h2>
         <%if(DbListener.exception!=null){%>
